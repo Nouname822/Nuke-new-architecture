@@ -1,0 +1,16 @@
+{
+    "name": "appname/auth",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Auth\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Admin",
+            "email": "amdr5663@gmail.com"
+        }
+    ],
+    "require": {}
+}

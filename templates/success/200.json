@@ -1,0 +1,6 @@
+{
+    "status": "success",
+    "code": "200",
+    "code_message": "OK",
+    "message": "{{ message }}"
+}

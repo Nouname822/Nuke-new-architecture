@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use Nurymbet\Core\Cli\CreateController;
+use Nurymbet\Core\Cli\CreateFilter;
+use Nurymbet\Core\Cli\CreateMigration;
+use Nurymbet\Core\Cli\CreateModel;
+use Nurymbet\Core\Cli\CreateModule;
+use Nurymbet\Core\Cli\CreateService;
+use Nurymbet\Core\Cli\Migrate;
+use Nurymbet\Core\Cli\Serve;
+use Symfony\Component\Console\Application;
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$application = new Application('Nuke', '1.0.0');
+
+$dir = __DIR__;
+
+$application->add(new CreateController($dir));
+$application->add(new CreateModel($dir));
+$application->add(new Serve($dir));
+$application->add(new CreateFilter($dir));
+$application->add(new CreateService($dir));
+$application->add(new CreateModule($dir));
+$application->add(new CreateMigration($dir));
+$application->add(new Migrate($dir, $_ENV));
+
+$application->run();
